@@ -1943,7 +1943,7 @@
                       data-widget_type="drakepricing.default"
                     >
                       <div class="elementor-widget-container">
-                        <!-- <section class="pricing-area">
+                       <!-- <section class="pricing-area">
                           <div class="custom-container">
                             <div class="pricing-content content-width">
                               <div class="section-header">
@@ -1959,9 +1959,9 @@
                                 >
                                   My <span>Pricing</span>
                                 </h1>
-                              </div> -->
+                              </div> 
 
-                        <!-- <div class="pricing-table-items">
+                         <div class="pricing-table-items">
                                 <div class="row">
                                   <div
                                     class="col-md-6 scroll-animation"
@@ -2056,8 +2056,8 @@
                                   Want to setup a new tailor-made package for
                                   only you?. <a href="#contact">Contact Us</a>
                                 </p>
-                              </div> -->
-                        <!-- </div>
+                              </div>
+                        </div>
                           </div>
                         </section> -->
                       </div>
@@ -2110,11 +2110,11 @@
                                   Let's Work <span>Together!</span>
                                 </h1>
                               </div>
-                              <!-- <h3
+                              <h3
                                 class="scroll-animation"
                                 data-animation="fade_from_bottom"
                               >
-Contact                             </h3> -->
+                </h3>
                               <p id="required-msg">
                                 * Marked fields are required to fill.
                               </p>
@@ -2346,6 +2346,24 @@ Contact                             </h3> -->
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
+
+
+        const emailInput = form.elements["Email"];
+  const nameInput = form.elements["Name"];
+
+
+        console.log('form',emailInput, nameInput)
+        console.log(emailInput.value)
+
+        if (!emailInput.value || !nameInput.value) {
+
+Swal.fire(
+      'Error!',
+      'Please fill in all required fields.',
+      'error'
+    );
+    return 
+        }
         Swal.fire(
         'Success!',
         'Thanks for Contacting us..! We Will Contact You Soon...',
