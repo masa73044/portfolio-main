@@ -2134,11 +2134,12 @@ Contact                             </h3> -->
                                   <ul></ul>
                                 </div>
                                 <form
-                                action="https://docs.google.com/forms/d/e/1FAIpQLSffgbGfyOIAhnf5Bp8RSL0KBpB2LeRURNyRPdzYhi_dvhAi1Q/formResponse"                                  method="post"
+                                  method="post"
                                   class="wpcf7-form init"
                                   aria-label="Contact form"
                                   novalidate="novalidate"
                                   data-status="init"
+                                  name="google-sheet"
 
                                 >
                                   <div style="display: none">
@@ -2186,13 +2187,21 @@ Contact                             </h3> -->
                                         <p>
                                           <label for="full-name"
                                             >Name <sup>*</sup></label
-                                          ><input
+                                          >
+                                          <!-- <input
                                             type="text"
                                             name="entry.2005620554"
                                             id="full-name"
                                             placeholder="Your Full Name"
                                             
-                                          />
+                                          /> -->
+                                          <input
+                                          type="text"
+                                          name="Name"
+                                          id="full-name"
+                                          placeholder="Your Full Name"
+                                          
+                                        />
                                         </p>
                                       </div>
                                     </div>
@@ -2203,7 +2212,7 @@ Contact                             </h3> -->
                                             >Email <sup>*</sup></label
                                           ><input
                                             type="email"
-                                            name="entry.1045781291"
+                                            name="Email"
                                             id="email"
                                             placeholder="Your email adress"
                                           />
@@ -2267,7 +2276,7 @@ Contact                             </h3> -->
                                         <p>
                                           <label for="message">message</label
                                           ><textarea
-                                           name="entry.1065046570"
+                                           name="Message"
                                             id="message"
                                             placeholder="Write your message here ..."
                                           ></textarea>
@@ -2328,6 +2337,27 @@ Contact                             </h3> -->
         </div>
       </div>
     </main>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbx0IZuG9Ic9UrSYIjYAtV7NdbXl-tPjbUw8VZyeBtZyloe9r9OLYkMViwpuAYJ99IIw/exec";
+      const form = document.forms["google-sheet"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        Swal.fire(
+        'Success!',
+        'Thanks for Contacting us..! We Will Contact You Soon...',
+        'success'
+      );
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) =>
+            alert("Thanks for Contacting us..! We Will Contact You Soon...")
+          )
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
 
     <script
       src="https://wpriverthemes.com/drake/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=5.7.5.1"
