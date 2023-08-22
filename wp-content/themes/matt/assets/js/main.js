@@ -36,6 +36,7 @@ $(function () {
   $(window)
     .scroll(function () {
       var windscroll = $(window).scrollTop();
+      console.log(windscroll);
       // if (windscroll >= 0) {
       //     $('.page-section').each(function(i) {
       //         if ($(this).position().top <= windscroll - -1) {
@@ -54,11 +55,10 @@ $(function () {
       //     $('.scroll-nav-responsive a:first').addClass('active');
       // }
 
-      console.log("windscroll", windscroll);
-
       if (windscroll >= 0) {
         $(".scroll-to-page").each(function (i) {
           var wscrolldecress = windscroll + 1;
+
           //                 console.log(wscrolldecress);
           if ($(this).position().top <= wscrolldecress - 0) {
             $(".scroll-nav .scroll-to.active").removeClass("active");
